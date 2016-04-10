@@ -29,8 +29,9 @@ WORKDIR /etc
 
 # Copy assets
 COPY assets/ /assets/
-RUN chmod 755 /assets/setup /assets/wrapper /assets/update-permissions && \
-/assets/setup
+RUN chmod 755 /assets/setup /assets/wrapper /assets/update-permissions 
+# Setup SSH
+RUN /assets/setup
 
 # Allow to access embedded tools
 ENV PATH /opt/gitlab/embedded/bin:/opt/gitlab/bin:/assets:$PATH
