@@ -7,7 +7,7 @@
 
 FROM centos:6
 
-MAINTAINER Will Hsu <uqwhsu@users.noreply.github.com>
+MAINTAINER Will Hsu <uqwhsu@gmail.com>
 
 # Install required packages
 RUN yum install -y epel-release && \
