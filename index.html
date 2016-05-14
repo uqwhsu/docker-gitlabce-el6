@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="docker-gitlabce-el6 : GitLab CE and CentOS6 in Docker container">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>docker-gitlabce-el6</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/uqwhsu/docker-gitlabce-el6">View on GitHub</a>
+
+          <h1 id="project_title">docker-gitlabce-el6</h1>
+          <h2 id="project_tagline">GitLab CE and CentOS6 in Docker container</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/uqwhsu/docker-gitlabce-el6/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/uqwhsu/docker-gitlabce-el6/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="gitlab-docker-images" class="anchor" href="#gitlab-docker-images" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>GitLab Docker images</h1>
+
+<h2>
+<a id="introduction" class="anchor" href="#introduction" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Introduction</h2>
+
+<p>This is adapted from official GitLab Docker images based on Ubuntu to use CentOS:6 base image, while follow as close to official Omnibus package install as possible.</p>
+
+<ul>
+<li><a href="https://about.gitlab.com/downloads/#centos6">Omnibus CentOS 6 install guide</a></li>
+<li><a href="https://gitlab.com/gitlab-org/gitlab-ce/tree/master">Official GitLab CE docker repo</a></li>
+</ul>
+
+<h2>
+<a id="complete-example" class="anchor" href="#complete-example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Complete Example</h2>
+
+<div class="highlight highlight-source-shell"><pre>sudo docker build -t uqwhsu/gitlab-ce --rm=<span class="pl-c1">true</span> --force-rm=<span class="pl-c1">true</span> <span class="pl-c1">.</span>
+
+sudo docker run --detach \
+    --hostname gitlab.example.com \
+    --publish 443:443 --publish 80:80 --publish 22:22 \
+    --name gitlab \
+    --restart always \
+    --volume /srv/gitlab/config:/etc/gitlab \
+    --volume /srv/gitlab/logs:/var/log/gitlab \
+    --volume /srv/gitlab/data:/var/opt/gitlab \
+    uqwhsu/gitlab-ce</pre></div>
+
+<p>After starting the container you can visit <a href="http://localhost/">http://localhost/</a> or <a href="http://192.168.59.103">http://192.168.59.103</a> if you use boot2docker.</p>
+
+<h2>
+<a id="additional-information" class="anchor" href="#additional-information" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Additional information</h2>
+
+<p>Please see official GitLab Docker images guide: <a href="https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/doc/docker/README.md">GitLab Docker images</a></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">docker-gitlabce-el6 maintained by <a href="https://github.com/uqwhsu">uqwhsu</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
