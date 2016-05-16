@@ -11,7 +11,7 @@ MAINTAINER Will Hsu <uqwhsu@gmail.com>
 
 # Install required packages
 RUN yum install -y epel-release && \
-yum -y install policycoreutils openssh-server openssh-clients postfix patch wget sudo initscripts cronie && \
+yum -y install policycoreutils openssh-server openssh-clients postfix patch wget sudo initscripts cronie git-annex && \
 yum -y update && \
 sed -i 's|Defaults    requiretty|Defaults    !requiretty|g' /etc/sudoers && \
 sed -i 's|#PermitRootLogin yes|PermitRootLogin no|g' /etc/ssh/sshd_config && \
