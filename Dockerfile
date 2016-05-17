@@ -10,9 +10,9 @@ FROM centos:6
 MAINTAINER Will Hsu <uqwhsu@gmail.com>
 
 # Install required packages
-RUN yum install -y epel-release && \
+RUN yum --exclude=kernel* -y update && \
+yum install -y epel-release && \
 yum -y install policycoreutils openssh-server openssh-clients postfix patch wget sudo initscripts cronie git-annex && \
-yum -y update && \
 sed -i 's|Defaults    requiretty|Defaults    !requiretty|g' /etc/sudoers && \
 sed -i 's|#PermitRootLogin yes|PermitRootLogin no|g' /etc/ssh/sshd_config && \
 sed -i 's|#Banner none|#Banner none\nUseDNS no\nAllowUsers git\nPrintMotd no\nPrintLastLog no|g' /etc/ssh/sshd_config && \
