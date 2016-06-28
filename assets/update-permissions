@@ -9,12 +9,12 @@ if id -u git; then
 	chown -R git:git /var/opt/gitlab/.gitconfig
 	chown -R git:git /var/opt/gitlab/git-data
 	chown -R git:git /var/opt/gitlab/gitlab-ci/builds
-	chown -R git:git /var/opt/gitlab/gitlab-git-http-server
 	chown -R git:git /var/opt/gitlab/gitlab-rails
 	chown -R git:git /var/opt/gitlab/gitlab-shell
+	chown -R git:gitlab-www /var/opt/gitlab/gitlab-workhorse
 
 	# Fix log storage
-	chown git /var/log/gitlab/gitlab-git-http-server
+	chown git /var/log/gitlab/gitlab-workhorse
 	chown git /var/log/gitlab/gitlab-rails
 	chown git /var/log/gitlab/gitlab-shell
 	chown git /var/log/gitlab/sidekiq
@@ -42,3 +42,8 @@ fi
 if id -u gitlab-redis; then
 	chown gitlab-redis:gitlab-redis /var/opt/gitlab/redis
 fi
+
+# Fix registry storage
+#if id -u registry; then
+#    chown -R registry:registry /var/opt/gitlab/gitlab-rails/shared/registry
+#fi
